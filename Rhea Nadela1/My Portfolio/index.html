@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nadela Rhea | Portfolio</title>
+
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+  <script src="https://unpkg.com/typed.js@2.0.15/dist/typed.umd.js"></script>
+
+  <style>
+  body {
+    background: linear-gradient(135deg, #f8f3a8, #f8f7a1);
+    color: #141414;
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    scroll-behavior: smooth;
+    position: relative;
+    overflow-x: hidden;
+  }
+
+  /* Decorative shape 1 - top left */
+  body::before {
+    content: "";
+    position: absolute;
+    top: 150px;
+    left: 50px;
+    width: 200px;
+    height: 200px;
+    background: radial-gradient(circle, #ffe259, #ffa751);
+    border-radius: 50%;
+    z-index: -1;
+    opacity: 0.6;
+    
+  }
+
+  /* Decorative shape 2 - bottom right */
+  body::after {
+    content: "";
+    position: absolute;
+    bottom: 60px;
+    right: 60px;
+    width: 300px;
+    height: 200px;
+    background: radial-gradient(circle, #fddb92, #32e1eb);
+    border-radius: 50%;
+    z-index: -1;
+    opacity: 0.6;
+  }
+    header {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px 100px;
+      background: rgba( square 238, 241, 142, 0.7);
+      backdrop-filter: blur(10px);
+      position: fixed;
+      width: 100%;
+      top: 50;
+      z-index: 1000;
+      gap: 50px;
+    }
+    .logo {
+      font-size: 30px;
+      color: #101111;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .navbar {
+      display: flex;
+      gap: 25px;
+    }
+    .navbar a {
+      color: #f7a65b;
+      text-decoration: none;
+      font-size: 18px;
+      transition: 0.3s;
+    }
+    .navbar a:hover {
+      color: #f8cc51;
+    }
+    section {
+      padding: 100px 50px;
+      text-align: center;
+    }
+    .home {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding-top: 100px;
+    }
+    .btn-box {
+      margin-top: 20px;
+      padding: 12px 30px;
+      background: #30fa41;
+      color: #000;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+    .btn-box:hover {
+      background: #2bf511;
+      color: #fff;
+    }
+    .about-img img {
+      width: 300px;
+      border-radius: 20px;
+      box-shadow: 0 0 20px #f5af53;
+      margin-bottom: 20px;
+    }
+    .services, .skills, .projects-content {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 30px;
+      margin-top: 30px;
+    }
+    .service-card, .project-card {
+      background: #faf880;
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 0 10px #f5a74d;
+      transition: 0.3s;
+      width: 300px;
+    }
+    .service-card:hover, .project-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 0 20px #f8a546;
+    }
+    .project-card img {
+      width: 100%;
+      border-radius: 10px;
+      margin-bottom: 15px;
+    }
+    span {
+      color: #527e02;
+    }
+    .top {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #e4a907;
+      padding: 10px;
+      border-radius: 50%;
+      color: #000;
+      font-size: 24px;
+      text-decoration: none;
+      display: none;
+    }
+    .top.show {
+      display: block;
+    }
+
+    /* Circular skill bar styles */
+    .skill-box {
+      text-align: center;
+      width: 180px;
+      margin: 20px;
+    }
+    .circular-skill {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      background: conic-gradient(var(--clr) calc(var(--num) * 1%), #333 0);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 10px auto;
+      font-size: 24px;
+      color: var(--clr);
+      font-weight: bold;
+      box-shadow: 0 0 10px var(--clr);
+      position: relative;
+    }
+    .circular-skill::before {
+      content: "";
+      position: absolute;
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      background: #1a1a1a;
+      z-index: 1;
+    }
+    .circular-skill span {
+      position: absolute;
+      z-index: 2;
+    }
+    .contact {
+      border: 3px solid #333;  /* Main border */
+      border-radius: 10px;
+      padding: 30px;
+      max-width: 600px;
+      margin: 40px auto;
+      background-color: #faf289;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    .contact h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      font-size: 28px;
+      color: #333;
+    }
+
+    .contact h2 span {
+      color: #f7a52b; /* Optional: highlight "Me" */
+    }
+
+    .contact p {
+      font-size: 16px;
+      color: #000000;
+      line-height: 1.6;
+      margin: 10px 0;
+    }
+
+    .contact p strong {
+      color: #070707;
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <a href="#" class="logo">Nadela Rhea</a>
+  <nav class="navbar">
+    <a href="#home">Home</a>
+    <a href="#about">About</a>
+    <a href="#services">Services</a>
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<section class="home" id="home">
+  <div class="about-img">
+    <img src="images/Rhea.jpg.jpg" alt="Profile Picture">
+  </div>
+  <h3>Hello, It's Me</h3>
+  <h3>I'm a <span class="text"></span></h3>
+  <p>Hello! I'm Rhea Nadela 
+    I aim to build a versatile career in the tech industry by combining my skills in web development, Greeting cards Designer, and video game development—creating responsive websites, providing reliable technical solutions, 
+    and designing immersive gaming experiences that reflect both technical excellence and creative problem-solving.</p>
+  <a href="#contact" class="btn-box">Contact Me</a>
+</section>
+
+<section class="about" id="about">
+  <div class="about-img">
+    <img src="images/Rhea.jpg.jpg" alt="Profile Picture">
+  </div>
+  <h3>About me</h3>
+  <h3><span class="text"></span></h3>
+  <p>I'm a creative and detail-oriented tech professional with expertise in web development, Greeting Cards designing, and video game development. I specialize in building responsive, user-focused eCommerce platforms with strong UI/UX design principles, while also providing dependable technical support and contributing to engaging, interactive game projects.
+
+    With a strong foundation in both front-end and back-end development, I bring a problem-solving mindset and a passion for clean, efficient code to every project. My goal is to create seamless digital experiences that are not only functional but also enjoyable for users.
+    
+    Let’s collaborate to build innovative solutions that make an impact.</p>
+</section>
+
+<section id="services">
+  <h2>My <span>Services</span></h2>
+  <div class="services">
+    <div class="service-card">
+      <h3>Web Development</h3>
+      <p>Modern, responsive websites built with clean, elegant design and solid functionality.</p>
+    </div>
+    <div class="service-card">
+      <h3>Greeting Card designing</h3>
+      <p>writing compelling, humorous, or sentimental text or poetry for holidays or other celebrations</p>
+    </div>
+    <div class="service-card">
+      <h3>Video game developer</h3>
+      <p>Efficiently developing responsive 3D applications for both mobile and PC.
+        andMaking the best use of game engines, including Unity, Unreal Engine 4, etc.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <h2>My <span>Skills</span></h2>
+  <div class="skills">
+    <div class="skill-box">
+      <div class="circular-skill" style="--num:90; --clr:#f19a42;"><span>90%</span></div>
+      <p>HTML & CSS</p>
+    </div>
+    <div class="skill-box">
+      <div class="circular-skill" style="--num:75; --clr:#8000ff;"><span>75%</span></div>
+      <p>JavaScript</p>
+    </div>
+    <div class="skill-box">
+      <div class="circular-skill" style="--num:80; --clr:#00c896;"><span>80%</span></div>
+      <p>PHP</p>
+    </div>
+    <div class="skill-box">
+      <div class="circular-skill" style="--num:50; --clr:#2e2eeb;"><span>50%</span></div>
+      <p>Java</p>
+    </div>
+  </div>
+</section>
+
+<section class="projects" id="projects">
+  <h2>My <span>Projects</span></h2>
+  <div class="projects-content">
+    <div class="project-card">
+      <img src="images/game1.jpg" alt="Cake Project">
+      <h3>Game Developer</h3>
+      <p>Developing designs, 3D modelers, animators, and sound designers to integrate their assets and ensure everything works smoothly.
+
+</p>
+    </div>
+    <div class="project-card">
+      <img src="images/greeting.jpg" alt="Greeting Cards and design">
+      <h3>Greeting Cards and Design</h3>
+      <p>Creating  a decorative or illustrated message card that conveys or expresses one's thoughts or emotions and may also be referred to as a message card.</p>
+    </div>
+    <div class="project-card">
+      <img src="images/support.jpg" alt="E-commerce Project">
+      <h3>Support Specialist</h3>
+      <p>ensures customers get the most out of a product or service, whether by advising on best practices, resolving issues, or guiding through features</p>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <h2>Contact <span>Me</span></h2>
+  <p>Have a project in mind or just want to connect? Let's talk!</p>
+  <p><strong>Address:</strong> Soong 1 Matan Lapu-lapu City, Cebu</p>
+  <p><strong>Email:</strong> NadelaRhea@gmail.com </p>
+  <p><strong>Phone:</strong> +63-297-969-271 </p>
+  <p><strong>Instagram:</strong> Miming </p>
+</section>
+
+<a href="#" class="top"><i class='bx bx-up-arrow-alt'></i></a>
+
+<script>
+  var typed = new Typed(".text", {
+    strings: ["Web Developer", "Technical support", "Video Game Developer"],
+    typeSpeed: 100,
+    backSpeed: 100,
+    backDelay: 1000,
+    loop: true
+  });
+
+  const topButton = document.querySelector('.top');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 500) {
+      topButton.classList.add('show');
+    } else {
+      topButton.classList.remove('show');
+    }
+  });
+
+  topButton.addEventListener('click', (e) => {
+    e.preventDefault();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+</script>
+
+</body>
+</html>
